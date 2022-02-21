@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import FormView, DetailView, UpdateView
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from re import L, template
 from . import forms, models
 
-# Create your views here.
 
 #메인 PAGE LISTVIEW로 수정해야함
 def HomeView(request):
@@ -29,3 +30,8 @@ class LoginView(FormView):
             return next_arg
         else:
             return reverse("core:home")
+
+def log_out(request):
+    messages.info(request, "Success LogOut")
+    logout(request)
+    return redirect(reverse("core:home"))

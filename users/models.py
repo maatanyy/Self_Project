@@ -25,10 +25,13 @@ class User(AbstractUser):
         upload_to="avatars", blank=True
     )  # null은 database에서 blank는 form에서
 
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
+    grade = models.CharField(choices=GRADE_CHOICES, max_length=10, blank=True)
 
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
+    
     bio = models.TextField(blank=True)  # default or null
     birthdate = models.DateField(blank=True, null=True)
+    influencer = models.BooleanField(default=False)
 
     email_verified = models.BooleanField(default=False)
     email_secret = models.CharField(max_length=20, default="", blank=True)
