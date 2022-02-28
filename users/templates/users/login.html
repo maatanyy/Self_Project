@@ -3,4 +3,23 @@
 {% block content %}
 
     LOGIN PAGE
+    <div>
+      
+        <form method= "POST" class="w-full" enctype="multipart/form-data"> 
+            {% csrf_token %}
+        
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+                {% for field in form  %}
+                {% endfor %}
+                    
+        </form>
+
+        <div>
+            <a href="#">Sign up</a>
+        </div>
+    </div>
 {% endblock content %}
